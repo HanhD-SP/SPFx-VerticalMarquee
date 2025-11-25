@@ -1,0 +1,2 @@
+# VerticalMarquee
+SPFx Vertical Marquee
