@@ -7,6 +7,7 @@ import {
   PropertyPaneDropdown,
   IPropertyPaneDropdownOption
 } from '@microsoft/sp-property-pane';
+import { PropertyFieldColorPicker, PropertyFieldColorPickerStyle } from '@pnp/spfx-property-controls/lib/PropertyFieldColorPicker';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
 import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
@@ -151,9 +152,18 @@ export default class VerticalMarqueeWebPart extends BaseClientSideWebPart<IVerti
                   description: strings.ScrollSpeedFieldDescription,
                   value: this.properties.scrollSpeed?.toString() || '1'
                 }),
-                PropertyPaneTextField('textColor', {
+                PropertyFieldColorPicker('textColor', {
                   label: strings.TextColorFieldLabel,
-                  description: strings.TextColorFieldDescription
+                  selectedColor: this.properties.textColor || '#000000',
+                  onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+                  properties: this.properties,
+                  disabled: false,
+                  debounce: 1000,
+                  isHidden: false,
+                  alphaSliderHidden: true,
+                  style: PropertyFieldColorPickerStyle.Full,
+                  iconName: 'Color',
+                  key: 'textColorFieldId'
                 })
               ]
             }
@@ -166,6 +176,9 @@ export default class VerticalMarqueeWebPart extends BaseClientSideWebPart<IVerti
   protected onPropertyPaneFieldChanged(propertyPath: string, oldValue: any, newValue: any): void {
     if (propertyPath === 'selectedList' && newValue) {
       this.context.propertyPane.refresh();
+      this.render();
+    } else if (propertyPath === 'textColor') {
+      this.properties.textColor = newValue;
       this.render();
     }
   }

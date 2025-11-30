@@ -13,6 +13,7 @@
   },
   "externals": {},
   "localizedResources": {
-    "VerticalMarqueeWebPartStrings": "lib/webparts/verticalMarquee/loc/{locale}.js"
+    "VerticalMarqueeWebPartStrings": "lib/webparts/verticalMarquee/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
   }
 }
