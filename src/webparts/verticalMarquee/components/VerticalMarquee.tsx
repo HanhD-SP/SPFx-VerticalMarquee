@@ -60,7 +60,7 @@ export default class VerticalMarquee extends React.Component<IVerticalMarqueePro
     }
     if (prevProps.scrollSpeed !== this.props.scrollSpeed) {
       const speed = typeof this.props.scrollSpeed === 'number' ? this.props.scrollSpeed : 1;
-      this.scrollSpeed = speed / 12.8; // Convert 1-10 to 0.078-0.78 pixels per frame (25% faster)
+      this.scrollSpeed = speed / 12.8;
     }
   }
 
@@ -92,7 +92,7 @@ export default class VerticalMarquee extends React.Component<IVerticalMarqueePro
       const data = await response.json();
       const items: IListItem[] = data.value || [];
 
-      // Duplicate items for seamless scrolling - need at least 2 copies
+      // Duplicate items twice for seamless scrolling
       const duplicatedItems = items.length > 0 ? [...items, ...items] : [];
 
       this.setState({ items: duplicatedItems, isLoading: false, error: null }, () => {
@@ -102,13 +102,12 @@ export default class VerticalMarquee extends React.Component<IVerticalMarqueePro
             if (this.scrollWrapperRef.current) {
               const firstItem = this.scrollWrapperRef.current.querySelector(`.${styles.marqueeItem}`) as HTMLElement;
               if (firstItem) {
-                const itemHeight = firstItem.offsetHeight;
-                this.itemSetHeight = itemHeight * items.length;
+                this.itemSetHeight = firstItem.offsetHeight * items.length;
                 this.scrollPosition = 0;
                 this.startScrolling();
               }
             }
-          }, 0);
+          }, 50);
         }
       });
     } catch (error) {
@@ -129,23 +128,17 @@ export default class VerticalMarquee extends React.Component<IVerticalMarqueePro
         const deltaTime = timestamp - this.lastTimestamp;
         this.lastTimestamp = timestamp;
         
-        // Smooth scrolling: use time-based movement for consistent speed
-        // Frame rate independent - smooth on all devices
-        const pixelsPerSecond = this.scrollSpeed * 60; // Convert to pixels per second
+        const pixelsPerSecond = this.scrollSpeed * 60;
         const movement = (pixelsPerSecond * deltaTime) / 1000;
         
         this.scrollPosition += movement;
 
-        // Seamless loop: reset position when reaching one complete set of items
-        // Reset at exact item boundaries to eliminate any flash
+        // Simple reset: when we reach one set, reset to 0
         if (this.scrollPosition >= this.itemSetHeight) {
-          this.scrollPosition = this.scrollPosition - this.itemSetHeight;
+          this.scrollPosition = 0;
         }
 
-        // Use transform with translate3d for better GPU acceleration
-        // Apply transform to wrapper for smooth, seamless scrolling
         wrapper.style.transform = `translate3d(0, -${this.scrollPosition}px, 0)`;
-        wrapper.style.willChange = 'transform';
       }
 
       this.animationFrameId = requestAnimationFrame(scroll);
