@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "vertical-marquee-client-side-solution",
+    "id": "47538688-bbb2-4f21-ac80-e26b042b99c5",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.21.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Vertical-Marquee description"
+      },
+      "longDescription": {
+        "default": "Vertical-Marquee description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "vertical-marquee Feature",
+        "description": "The feature that activates elements of the vertical-marquee solution.",
+        "id": "3b87d7cd-d3ef-4d43-b847-6d68ffa2f531",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/vertical-marquee.sppkg"
+  }
+}

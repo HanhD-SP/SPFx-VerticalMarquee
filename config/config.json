@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "vertical-marquee-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/verticalMarquee/VerticalMarqueeWebPart.js",
+          "manifest": "./src/webparts/verticalMarquee/VerticalMarqueeWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "VerticalMarqueeWebPartStrings": "lib/webparts/verticalMarquee/loc/{locale}.js"
+  }
+}

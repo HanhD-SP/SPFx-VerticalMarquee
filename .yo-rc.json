@@ -1,0 +1,18 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.21.1",
+    "sdksVersions": {},
+    "version": "1.21.1",
+    "libraryName": "vertical-marquee",
+    "libraryId": "47538688-bbb2-4f21-ac80-e26b042b99c5",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "Vertical-Marquee",
+    "solutionShortDescription": "Vertical-Marquee description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
