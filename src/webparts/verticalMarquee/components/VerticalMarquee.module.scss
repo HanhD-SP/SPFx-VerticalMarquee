@@ -17,12 +17,8 @@
 
 .scrollContainer {
   height: 100%;
-  overflow: none;
+  overflow: hidden;
   position: relative;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  display: flex;
 }
 
 .scrollWrapper {

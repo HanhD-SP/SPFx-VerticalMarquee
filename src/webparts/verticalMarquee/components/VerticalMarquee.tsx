@@ -92,17 +92,25 @@ export default class VerticalMarquee extends React.Component<IVerticalMarqueePro
       const data = await response.json();
       const items: IListItem[] = data.value || [];
 
-      // Duplicate items twice for seamless scrolling
-      const duplicatedItems = items.length > 0 ? [...items, ...items] : [];
+      // Duplicate items 3 times for seamless looping - this ensures when we reset,
+      // identical items are already positioned to eliminate any flicker
+      const duplicatedItems = items.length > 0 ? [...items, ...items, ...items] : [];
 
       this.setState({ items: duplicatedItems, isLoading: false, error: null }, () => {
         if (duplicatedItems.length > 0) {
           // Calculate item set height after render
           setTimeout(() => {
             if (this.scrollWrapperRef.current) {
-              const firstItem = this.scrollWrapperRef.current.querySelector(`.${styles.marqueeItem}`) as HTMLElement;
-              if (firstItem) {
-                this.itemSetHeight = firstItem.offsetHeight * items.length;
+              // Calculate total height of one set of items
+              let totalHeight = 0;
+              const itemElements = this.scrollWrapperRef.current.querySelectorAll(`.${styles.marqueeItem}`);
+              if (itemElements.length > 0) {
+                // Sum up heights of first set of items
+                for (let i = 0; i < items.length; i++) {
+                  totalHeight += (itemElements[i] as HTMLElement).offsetHeight;
+                }
+                this.itemSetHeight = totalHeight;
+                // Start scrolling from the beginning
                 this.scrollPosition = 0;
                 this.startScrolling();
               }
@@ -133,12 +141,16 @@ export default class VerticalMarquee extends React.Component<IVerticalMarqueePro
         
         this.scrollPosition += movement;
 
-        // Simple reset: when we reach one set, reset to 0
+        // Seamless loop: when we reach the end of first set, reset to 0
+        // Since we have 3 copies, the second set is identical to the first,
+        // so resetting to 0 is invisible (no flicker)
         if (this.scrollPosition >= this.itemSetHeight) {
-          this.scrollPosition = 0;
+          this.scrollPosition = this.scrollPosition - this.itemSetHeight;
         }
 
-        wrapper.style.transform = `translate3d(0, -${this.scrollPosition}px, 0)`;
+        // Use sub-pixel rendering for ultra-smooth scrolling
+        wrapper.style.transform = `translate3d(0, -${this.scrollPosition.toFixed(3)}px, 0)`;
+        wrapper.style.willChange = 'transform';
       }
 
       this.animationFrameId = requestAnimationFrame(scroll);
