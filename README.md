@@ -1,8 +1,10 @@
 # vertical-marquee
 
 ## Summary
-
-Short summary on functionality and used technologies.
+Vertical Marquee SPFx web part has:
+1. Smooth upward scrolling animation
+2. Continuous loop (infinite scroll)
+3. Configurable scroll speed and color wheel.
 
 <img width="760" height="595" alt="image" src="https://github.com/user-attachments/assets/d75879b8-09ca-4369-828b-3126b9549090" />
 
