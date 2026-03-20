@@ -1,4 +1,4 @@
-# vertical-marquee
+# SPFx-VerticalMarquee
 
 ## Summary
 Vertical Marquee SPFx web part has:
