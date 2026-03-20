@@ -2,11 +2,12 @@
 
 ## Summary
 
-Short summary on functionality and used technologies. 
+Short summary on functionality and used technologies.
+
+<img width="760" height="595" alt="image" src="https://github.com/user-attachments/assets/d75879b8-09ca-4369-828b-3126b9549090" />
 
 
-
-## Used SharePoint Framework v1.21 
+## Used SharePoint Framework v1.21Â 
 https://learn.microsoft.com/en-us/sharepoint/dev/spfx/release-1.21
 
 - [SharePoint Framework](https://aka.ms/spfx)
