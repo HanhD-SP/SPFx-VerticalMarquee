@@ -35,13 +35,11 @@ https://learn.microsoft.com/en-us/sharepoint/dev/spfx/release-1.21
 - If there are any dependency issues, install the CLI for Microsoft 365 (https://pnp.github.io/cli-microsoft365), log in, and run the command "m365 spfx doctor" (without the quotes). Then follow the instructions to upgrade or downgrade dependency packages.
     
 ## Features
-
 Description of the web part that expands upon high-level summary above.
 
 This web part illustrates the following concepts:
-- Select a SharePoint list from the property pane
-- Customize the color
-- Customize the Scroll Speed
-
+* Building a custom SPFx Client-Side web part
+* Calling the SharePoint REST APIs
+* Using React components and SCSS styling to create configurable text, scroll speed, and text color.
 
 
