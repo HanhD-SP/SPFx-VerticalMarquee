@@ -32,9 +32,8 @@ https://learn.microsoft.com/en-us/sharepoint/dev/spfx/release-1.21
 - in the command-line run:
   - **npm install**
   - **gulp serve**
-
-> Include any additional steps as needed.
-
+- If there are any dependency issues, install the CLI for Microsoft 365 (https://pnp.github.io/cli-microsoft365), log in, and run the command "m365 spfx doctor" (without the quotes). Then follow the instructions to upgrade or downgrade dependency packages.
+    
 ## Features
 
 Description of the web part that expands upon high-level summary above.
