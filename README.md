@@ -6,7 +6,9 @@ SPFx Vertical Marquee web part has:
 2. Continuous loop (infinite scroll)
 3. Configurable scroll speed and color wheel.
 
-<img width="760" height="595" alt="image" src="https://github.com/user-attachments/assets/d75879b8-09ca-4369-828b-3126b9549090" />
+<img width="952" height="755" alt="verticalmarquee1" src="https://github.com/user-attachments/assets/9108465d-4b05-4316-bc7b-52087ca0a6fd" />
+
+![verticalmarquee2](https://github.com/user-attachments/assets/cea5ff63-af75-4eb8-b9ad-587c8386b5f0)
 
 ## Used SharePoint Framework v1.21 
 https://learn.microsoft.com/en-us/sharepoint/dev/spfx/release-1.21
